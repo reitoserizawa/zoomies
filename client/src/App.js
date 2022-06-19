@@ -1,6 +1,5 @@
-import React from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import {Route, Switch} from 'react-router-dom';
 import './App.css';
 import HomePage from './components/HomePage'
 import SignUp from './components/SignUp'
@@ -11,9 +10,11 @@ import Profile from './components/Profile'
 import NavBar from './components/NavBar'
 
 function App() {
+  const [username, setUsername] = useState("")
+
   return (
     <div className="App">
-      <NavBar />
+      <NavBar login={username}/>
       <Switch>
         <Route exact path='/'>
           <HomePage />
