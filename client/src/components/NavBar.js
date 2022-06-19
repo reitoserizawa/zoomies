@@ -47,17 +47,7 @@ function NavBar ({login}) {
                 </ul>
                 
                 <form class="form-inline my-2 my-lg-0">
-
-
-                    {/* <NavLink to='/login' exact>
-                        <button class="btn btn-outline-primary my-2 my-sm-0" style={{margin: "1rem"}} type="submit">Log In</button>
-                    </NavLink>
-
-                    <NavLink to='/signup' exact>
-                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Register</button>
-                    </NavLink> */}
                     {buttons}
-                    
                 </form>
   </div>
 </nav>
