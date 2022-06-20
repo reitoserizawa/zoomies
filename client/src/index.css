@@ -5,9 +5,87 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* overflow-x: hidden; */
+  padding-top: 3.75rem;
+}
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* HomePage css */
+
+.homepage-container {
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3.0rem;
+}
+
+.homepage-top-img { 
+  width: 100%;
+  height: auto;
+  opacity: 0.8;
+  object-fit: cover;
+}
+
+.homepage-font {
+  color: white;
+  transform: translateZ(-2px) scale(1.5);
+  white-space: nowrap;
+  text-shadow: 1px 2px 3px #808080
+
+}
+
+.right {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  font-size: 3.0rem;
+}
+
+.left {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  font-size: 3.0rem;
+}
+
+.homepage-second-img { 
+  width: 47rem;
+  height: 28em;
+  object-fit: cover;
+  padding: 1.2rem;
+}
+

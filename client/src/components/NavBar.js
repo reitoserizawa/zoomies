@@ -29,7 +29,7 @@ function NavBar ({login}) {
         <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <NavLink to='/' exact>
-                    <a class="navbar-brand" href="/"><i class="fa-solid fa-paw"></i> Zoomies</a>
+                    <a class="navbar-brand" href="/" style={{fontSize: "150%"}}><i class="fa-solid fa-paw"></i> Zoomies</a>
                 </NavLink>
 
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
