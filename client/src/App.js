@@ -12,29 +12,48 @@ import NavBar from './components/NavBar.js'
 
 function App() {
   const [user, setUser] = useState(null)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    if (user) {
+      setIsLoggedIn(true)
+    }
+  }, [user])
+  
   console.log(user)
+
+  console.log(isLoggedIn)
 
   useEffect(() => {
     // auto-login
-    fetch("http://localhost:3000/me").then((r) => {
+    fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
     });
   }, []);
 
+  function handleLogoutClick() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setIsLoggedIn(false)
+        setUser(null);
+      }
+    });
+  }
+
   return (
     <div className="App">
-      <NavBar />
+      <NavBar setUser={setUser} handleLogoutClick={handleLogoutClick}/>
       <Switch>
         <Route exact path='/'>
           <HomePage />
         </Route>
         <Route exact path='/signup'>
-          <SignUp />
+          <SignUp setUser={setUser}/>
         </Route>
         <Route exact path='/login'>
-          <LogIn setUser={setUser}/>
+          <LogIn setUser={setUser} user={user} isLoggedIn={isLoggedIn}/>
         </Route>
         <Route exact path='/dog_parks'>
           <DogParkContainer />

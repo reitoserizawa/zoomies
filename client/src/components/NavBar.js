@@ -2,7 +2,8 @@ import {Link} from 'react-router-dom'
 import HomePage from './HomePage.js'
 import DogContainer from './DogContainer.js'
 
-function NavBar() {
+function NavBar({setUser, handleLogoutClick}) {
+    
   return (
     <div>
         <Link exact to='/'>
@@ -23,6 +24,7 @@ function NavBar() {
         <Link to='signup'>
             Register
         </Link>
+        <button onClick={handleLogoutClick}>Logout</button>
     </div>
   )
 }
