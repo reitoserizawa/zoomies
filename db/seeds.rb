@@ -13,6 +13,16 @@ puts "Seeding started"
     
 end
 
+User.create(
+    first_name: 'Katey',
+    last_name: 'Van',
+    email: '123@gmail.com',
+    img: 'https://www.gardendesign.com/pictures/images/675x529Max/site_3/helianthus-yellow-flower-pixabay_11863.jpg',
+    active: false,
+    username: 'katey',
+    password: '12345',
+)
+
 reito = 
     Dog.create(
         name: "Reito",
