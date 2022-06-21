@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Errors from './Errors.js'
 
 function SignUp({setUser}) {
     const [formData, setFormData] = useState({
@@ -44,7 +45,7 @@ function SignUp({setUser}) {
                 password: "",
                 password_confirmation: ""
             })
-            history.push('/home')
+            history.push('/')
         } else {
             r.json().then((err) => setErrors(err.errors));
         }
@@ -123,6 +124,7 @@ function SignUp({setUser}) {
             />
             <button type="submit">SignUp</button>
         </form>
+        { errors !== [] ? <Errors errors={errors} /> : null}
     </div>
   )
 }

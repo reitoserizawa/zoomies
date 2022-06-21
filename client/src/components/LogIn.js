@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useHistory } from 'react-router-dom'
+import Errors from './Errors.js'
 
 function LogIn({user, setUser, isLoggedIn}) {
     const [username, setUsername] = useState("");
@@ -20,13 +21,16 @@ function LogIn({user, setUser, isLoggedIn}) {
         if (r.ok) {
             r.json().then((user) => setUser(user));
             history.push('/')
+            setUsername("")
+            setPassword("")
         } else {
-            r.json().then((err) => setErrors(err.error));
+            r.json().then((err) => setErrors(err.errors));
         }
         });
-        setUsername("")
-        setPassword("")
+        
     }
+
+    console.log(errors)
 
 
 
@@ -58,6 +62,7 @@ function LogIn({user, setUser, isLoggedIn}) {
             />
             <button type="submit">Login</button>
         </form>
+        { errors !== [] ? <Errors errors={errors} /> : null}
         <small>Don't have an account? <a href="/signup">Register</a></small>
     </div>
   )
