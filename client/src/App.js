@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
+import Cookies from 'js-cookie'
 import logo from './logo.svg';
 import './App.css';
 import HomePage from './components/HomePage.js'
@@ -28,7 +29,10 @@ function App() {
     // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => {
+          Cookies.set('user_id', user.id)
+          setUser(user)
+        });
       }
     });
   }, []);
@@ -59,7 +63,7 @@ function App() {
           <DogParkContainer />
         </Route>
         <Route exact path='/profile'>
-          <Profile />
+          <Profile user={user} setUser={setUser}/>
         </Route>
         <Route exact path='/dogs'>
           <DogContainer />

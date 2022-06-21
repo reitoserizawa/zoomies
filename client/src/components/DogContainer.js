@@ -11,7 +11,7 @@ function DogContainer() {
     }, [])
 
     const renderDogs = dogs.map((dog) => {
-        return <DogTile key={dog.id} dog={dog} />
+        return <DogTile key={dog.id} dog={dog} height={'200px'} width={'200px'} />
     })
 
   return (
