@@ -26,7 +26,7 @@ function App() {
           <LogIn />
         </Route>
         <Route exact path='/dog_parks'>
-          <DogParkContainer />
+          <DogParkContainer login={username}/>
         </Route>
         <Route exact path='/profile'>
           <Profile />

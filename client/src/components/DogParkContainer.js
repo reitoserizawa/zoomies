@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import DogParkItem from './DogParkItem'
 
-function DogParkContainer () {
+function DogParkContainer ({login}) {
 
     const [dogParks, setDogParks] = useState([])
 
@@ -13,7 +13,7 @@ function DogParkContainer () {
     )
 
     let renderDogParkItem = dogParks.map (dogPark => {
-        return <DogParkItem name={dogPark.name} address={dogPark.address} image={dogPark.img}/>
+        return <DogParkItem name={dogPark.name} address={dogPark.address} image={dogPark.img} login={login}/>
     })
 
     return (
@@ -50,6 +50,9 @@ function DogParkContainer () {
                     <li style={{position: "absolute", top: "73%", left:"50%"}}><i class="fa-solid fa-bone"></i> See who the owner is</li>
                 </ul>
             </div>
+            
+            
+
         </div>
 
         <div class="container">

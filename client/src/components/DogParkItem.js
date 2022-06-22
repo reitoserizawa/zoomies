@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DogParkItem ({name, address, image}) {
+function DogParkItem ({name, address, image, login}) {
 
     return (
         <div class="col-xl-3 col-md-6 mb-4">
@@ -14,7 +14,7 @@ function DogParkItem ({name, address, image}) {
                     
                     <hr/>
                     
-                    <button type="button" class="btn btn-outline-info">Check In</button>
+                    {login ? <button type="button" class="btn btn-outline-info">Check In</button> : <button type="button" class="btn btn-outline-info">Log In</button>}
                     
                 </div>
             </div>
