@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Cookies from 'js-cookie'
 import './Profile.css'
 import DogTile from './DogTile'
+import AddDogButton from './AddDogButton'
 
 function Profile({user, setUser}) {
 
@@ -31,10 +32,10 @@ function Profile({user, setUser}) {
                 {dogs.map((dog) => {
                     return <DogTile key={dog.id} dog={dog} height={'100px'} width={'100px'}/>
                 })}
-                <button>add another dog</button>
+                <AddDogButton text={'add another dog'}/>
             </>
            
-            : <button>add your dog!</button> }
+            : <AddDogButton text={'add a dog'}/> }
         </div>
         <img id="user-profile-img" src={img}/>
     </div>

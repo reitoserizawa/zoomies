@@ -27,6 +27,12 @@ class DogsController < ApplicationController
         head :no_content
     end
 
+    def show_users_dogs
+        render json: Dog.same_owners(params[:id])
+    end
+
+
+
 
     private
 

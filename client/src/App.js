@@ -10,6 +10,7 @@ import DogParkContainer from './components/DogParkContainer.js'
 import DogContainer from './components/DogContainer.js'
 import Profile from './components/Profile.js'
 import NavBar from './components/NavBar.js'
+import AddDogForm from './components/AddDogForm';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -67,6 +68,9 @@ function App() {
         </Route>
         <Route exact path='/dogs'>
           <DogContainer />
+        </Route>
+        <Route exact path='/add_dog'>
+          <AddDogForm />
         </Route>
       </Switch>
     </div>
