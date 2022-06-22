@@ -1,0 +1,23 @@
+#my-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+
+}
+
+#user-profile-img {
+    width:300px;
+    height:300px;
+    object-fit: cover;
+    border-radius:50%;
+}
+
+#user-info {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+

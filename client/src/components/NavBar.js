@@ -1,17 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 
-function NavBar ({login}) {
+function NavBar ({isLoggedIn, handleLogoutClick}) {
 
     let buttons
 
-    if (login) {        
+    if (isLoggedIn) {        
         buttons = <>
             <NavLink to='/profile' exact>
                 <button className="btn btn-outline-primary my-2 my-sm-0" style={{margin: "1rem"}} type="submit">Profile</button>
             </NavLink>
             <NavLink to='/logout' exact>
-                <button className="btn btn-primary my-2 my-sm-0" type="submit">Log Out</button>
+                <button className="btn btn-primary my-2 my-sm-0" type="submit" onClick={handleLogoutClick}>Log Out</button>
             </NavLink>
             </>
     } else {

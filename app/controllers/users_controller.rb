@@ -6,13 +6,19 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = find_user
-        render json: user, status: :ok
+        current_user = User.find(session[:current_user])
+        puts "User ID:#{session[:current_user]}"
+        render json: current_user
     end
 
     def create
-        user = User.create!(user_param)
-        render json: user, status: :created
+        user = User.create!(user_params)
+        if user.valid?
+            session[:current_user] = user.id
+            render json: user, status: 201
+        else
+            render json: { error: "Invalid user" }, status: 422
+        end
     end
 
     def update
@@ -31,7 +37,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:first_name, :last_name, :email, :img, :username, :password, :password_confirmation)
+        params.permit(:first_name, :last_name, :email, :img, :active, :username, :password, :password_confirmation)
     end
 
     def find_user
@@ -39,3 +45,4 @@ class UsersController < ApplicationController
     end
 
 end
+

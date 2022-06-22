@@ -1,4 +1,5 @@
 class DogsController < ApplicationController
+
     def index
         dogs = Dog.all
         render json: dogs, status: :ok
@@ -25,6 +26,12 @@ class DogsController < ApplicationController
         dog.destroy
         head :no_content
     end
+
+    def show_users_dogs
+        render json: Dog.same_owners(params[:id])
+    end
+
+
 
 
     private
