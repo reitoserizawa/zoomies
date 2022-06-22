@@ -4,10 +4,12 @@ import './Profile.css'
 import DogTile from './DogTile'
 import AddDogButton from './AddDogButton'
 
-function Profile({user, setUser}) {
+function Profile({user}) {
 
     if (!user) return null;
     const { id, first_name, last_name, email, img, active, username, dogs } = user
+
+
     
   return (
     <div id='my-profile'>

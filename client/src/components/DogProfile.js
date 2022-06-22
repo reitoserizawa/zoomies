@@ -3,12 +3,10 @@ import { useParams } from 'react-router-dom'
 import './DogProfile.css'
 import DeleteDog from './DeleteDog'
 
-function DogProfile({user}) {
+function DogProfile({user, handleDeleteDog}) {
     const [dog, setDog] = useState(null)
     const params = useParams()
-    const id = user.id
-    console.log(id)
-    // console.log(dog)
+    console.log(user)
     
 
     useEffect(() => {
@@ -19,6 +17,7 @@ function DogProfile({user}) {
 
     
     if (!dog) return null;
+    if (!user) return null
 
 
   return (
@@ -29,7 +28,7 @@ function DogProfile({user}) {
         <small className='dog-profile-text'>breed: {dog.breed}</small>
         <small className='dog-profile-text'>size: {dog.size}</small>
         <small class='dog-profile-text'>owner: {dog.user.first_name} {dog.user.last_name}</small>
-        {dog.user.id === id ? <DeleteDog/> : null}
+        {dog.user.id === user.id ? <DeleteDog dog={dog} handleDeleteDog={handleDeleteDog}/> : null}
 
     </div>
   )

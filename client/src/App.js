@@ -18,50 +18,40 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [dogs, setDogs] = useState([])
   const [updatedDogs, setUpdatedDogs] = useState(dogs)
-  // const [updatedUser, setUpdatedUser] = useState(user)
- 
-
-    useEffect(() => {
-      setUpdatedDogs(dogs)
-    }, [dogs])
-
-  
-
-    // useEffect(() => {
-    //   setUpdatedUser(user)
-    // }, [user, dogs])
-
-    useEffect(() => {
-        fetch("/dogs")
-        .then(r => r.json())
-        .then(dogs => setDogs(dogs))
-    }, [])
-
-    
-
-
-  
-
 
   useEffect(() => {
-    if (user) {
-      setIsLoggedIn(true)
-    }
-  }, [user])
-  
+    setUpdatedDogs(dogs)
+  }, [dogs])
 
+  useEffect(() => {
+      fetch("/dogs")
+      .then(r => r.json())
+      .then(dogs => setDogs(dogs))
+  }, [])
+
+  // useEffect(() => {
+  //   if (user) {
+  //     setIsLoggedIn(true)
+  //   }
+  // }, [user])
 
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => {
-          Cookies.set('user_id', user.id)
+          // Cookies.set('user_id', user.id)
           setUser(user)
+          setIsLoggedIn(true)
         });
       }
     });
   }, [updatedDogs]);
+
+  // 
+  console.log(user)
+
+  // 
 
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -76,6 +66,11 @@ function App() {
     setUpdatedDogs([...updatedDogs, newDog])
   }
 
+  const handleDeleteDog = (deletedDog) => {
+    const filteredDogs = updatedDogs.filter((dog) => deletedDog.id !== dog.id)
+    setUpdatedDogs(filteredDogs)
+  }
+
   return (
     <div className="App">
       <NavBar isLoggedIn={isLoggedIn} handleLogoutClick={handleLogoutClick}/>
@@ -87,13 +82,13 @@ function App() {
           <SignUp setUser={setUser}/>
         </Route>
         <Route exact path='/login'>
-          <LogIn setUser={setUser} user={user} isLoggedIn={isLoggedIn}/>
+          <LogIn setUser={setUser} user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         </Route>
         <Route exact path='/dog_parks'>
           <DogParkContainer isLoggedIn={isLoggedIn}/>
         </Route>
         <Route exact path='/profile'>
-          <Profile user={user} setUser={setUser}/>
+          <Profile user={user}/>
         </Route>
         <Route exact path='/dogs'>
           <DogContainer dogs={updatedDogs}/>
@@ -102,7 +97,7 @@ function App() {
           <AddDogForm user={user} handleAddDog={handleAddDog}/>
         </Route>
         <Route path='/dogs/:id'>
-          <DogProfile user={user} />
+          <DogProfile user={user} handleDeleteDog={handleDeleteDog} />
         </Route>
       </Switch>
     </div>
