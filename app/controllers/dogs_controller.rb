@@ -11,7 +11,7 @@ class DogsController < ApplicationController
     end
 
     def create
-        dog = Dog.create!(dog_param)
+        dog = Dog.create!(dog_params)
         render json: dog, status: :created
     end
 
@@ -26,12 +26,6 @@ class DogsController < ApplicationController
         dog.destroy
         head :no_content
     end
-
-    def show_users_dogs
-        render json: Dog.same_owners(params[:id])
-    end
-
-
 
 
     private

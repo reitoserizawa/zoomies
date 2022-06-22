@@ -29,7 +29,7 @@ reito =
         name: "Reito",
         breed: "Reito",
         size: "Small",
-        img: "Reito",
+        img: "https://www.prestigeanimalhospital.com/sites/default/files/styles/large/public/golden-retriever-dog-breed-info.jpg?itok=scGfz-nI",
         user_id: 1
         )
 

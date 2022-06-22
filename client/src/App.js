@@ -10,11 +10,38 @@ import DogParkContainer from './components/DogParkContainer.js'
 import DogContainer from './components/DogContainer.js'
 import Profile from './components/Profile.js'
 import NavBar from './components/NavBar.js'
-import AddDogForm from './components/AddDogForm';
+import AddDogForm from './components/AddDogForm.js';
+import DogProfile from './components/DogProfile.js'
 
 function App() {
   const [user, setUser] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [dogs, setDogs] = useState([])
+  const [updatedDogs, setUpdatedDogs] = useState(dogs)
+  // const [updatedUser, setUpdatedUser] = useState(user)
+ 
+
+    useEffect(() => {
+      setUpdatedDogs(dogs)
+    }, [dogs])
+
+  
+
+    // useEffect(() => {
+    //   setUpdatedUser(user)
+    // }, [user, dogs])
+
+    useEffect(() => {
+        fetch("/dogs")
+        .then(r => r.json())
+        .then(dogs => setDogs(dogs))
+    }, [])
+
+    
+
+
+  
+
 
   useEffect(() => {
     if (user) {
@@ -22,9 +49,7 @@ function App() {
     }
   }, [user])
   
-  console.log(user)
 
-  console.log(isLoggedIn)
 
   useEffect(() => {
     // auto-login
@@ -36,7 +61,7 @@ function App() {
         });
       }
     });
-  }, []);
+  }, [updatedDogs]);
 
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -45,6 +70,10 @@ function App() {
         setUser(null);
       }
     });
+  }
+
+  const handleAddDog = (newDog) => {
+    setUpdatedDogs([...updatedDogs, newDog])
   }
 
   return (
@@ -67,10 +96,13 @@ function App() {
           <Profile user={user} setUser={setUser}/>
         </Route>
         <Route exact path='/dogs'>
-          <DogContainer />
+          <DogContainer dogs={updatedDogs}/>
         </Route>
         <Route exact path='/add_dog'>
-          <AddDogForm />
+          <AddDogForm user={user} handleAddDog={handleAddDog}/>
+        </Route>
+        <Route path='/dogs/:id'>
+          <DogProfile user={user} />
         </Route>
       </Switch>
     </div>

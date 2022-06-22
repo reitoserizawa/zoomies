@@ -1,0 +1,18 @@
+#dog-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+#dog-profile-img {
+    width:300px;
+    height:300px;
+    object-fit: cover;
+    border-radius:50%;
+}
+
+.dog-profile-text {
+    font-size: 20px;
+}
