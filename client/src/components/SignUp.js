@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Errors from './Errors.js'
 
-function SignUp({setUser}) {
+function SignUp({setUser, setIsCheckedIn}) {
     const [formData, setFormData] = useState({
         first_name: "",
         last_name: "",
@@ -46,6 +46,7 @@ function SignUp({setUser}) {
                 password_confirmation: ""
             })
             history.push('/')
+            setIsCheckedIn(false)
         } else {
             r.json().then((err) => setErrors(err.errors));
         }

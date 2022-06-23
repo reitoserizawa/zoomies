@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import DogParkItem from './DogParkItem'
 
-function DogParkContainer ({isLoggedIn}) {
-
+function DogParkContainer ({isLoggedIn, isCheckedIn, user}) {
     const [dogParks, setDogParks] = useState([])
 
     useEffect(() => {
@@ -12,13 +11,30 @@ function DogParkContainer ({isLoggedIn}) {
     }, []
     )
 
+    if (!user) return null
+
+    const link = () => {
+        if (isCheckedIn){
+            return `http://localhost:4000/dog_parks/${user.check_ins[0].dog_park_id}`
+        }
+    }
+
+    // console.log(`link ${link()}`)
+         
+    
+    
+
+
+
+
     let renderDogParkItem = dogParks.map (dogPark => {
-        return <DogParkItem key= {dogPark.id} name={dogPark.name} address={dogPark.address} image={dogPark.img} login={isLoggedIn} id={dogPark.id} />
+        return <DogParkItem key= {dogPark.id} name={dogPark.name} address={dogPark.address} image={dogPark.img} login={isLoggedIn} id={dogPark.id} count={dogPark.dog_count} isCheckedIn={isCheckedIn} />
     })
 
     return (
         <>
         <div style={{position: "relative", height: "50rem"}}>
+            {isCheckedIn ? <small style={{fontSize: "20px"}}>You're checked in <a href={link()}>here</a></small> : null}
             <h1 style={{position: "absolute", top: "10%", left: "25%"}}>Find Dog Parks and Check In!</h1>
             
             <div style={{width: "50%", marginRight: "auto", marginLeft: "0"}}>

@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from "react-router-dom";
+import DogTile from './DogTile.js';
 
-function CheckIn ({user}) {
+function CheckIn ({user, setIsCheckedIn={setIsCheckedIn}}) {
     const params = useParams();
 
     // State hook for a dog dark data
@@ -38,8 +39,6 @@ function CheckIn ({user}) {
     // Help refrenshing the page
     if (!user) return null
 
-    console.log(data)
-
 
     // Showing All the Active Dogs
 
@@ -47,7 +46,9 @@ function CheckIn ({user}) {
     let matchedCheckIns = checkIns.filter(checkIn => checkIn.dog_park_id == params.id)
     // Mapping through and returning images to show the dog pictures associated with the check-ins
     let checkedInDogsPics = matchedCheckIns.map(checkIn => {
-        return <img src={checkIn.dog.img} alt={checkIn.dog.name}/>})
+        // return <img src={checkIn.dog.img} alt={checkIn.dog.name}/>
+        return <DogTile dog={checkIn.dog} height="100px" width="100px" />
+    })
 
     
     // Creating/Deleting a New Check-in Data
@@ -60,13 +61,12 @@ function CheckIn ({user}) {
     // Grabbing the pull-down list and setting the dog_id to a new check-in data
     function handleChange(e) { 
         const {name, value} = e.target
-        setData((data => ({...data, [name]: value})))
+        setData((data => ({...data, [name]: value, user_id: user.id})))
     }
 
     // Submitting the new check-in information to the server
     function handleCheckIn (e) {
         e.preventDefault()
-        setData((data => ({...data, user_id: user.id})))
         console.log(data)
         fetch("/check_ins", {
             method: "POST",
@@ -76,13 +76,17 @@ function CheckIn ({user}) {
             body: JSON.stringify(data)
         }).then((r) => {
             if (r.ok) {
-                r.json().then((data) => console.log(data))
+                r.json().then((data) => {
+                    console.log(data)
+                    setIsCheckedIn(true)
+                })
             } else {
                 r.json().then((err) => setErrors(err.errors));
                 console.log(errors)
             }
         })
     }
+
 
     // Deleting the check-in
     function handleCheckOut () {
@@ -91,6 +95,7 @@ function CheckIn ({user}) {
         .then(r => {
             if(r.ok) {
                 console.log(r)
+                setIsCheckedIn(false)
             } else {
                 r.json().then(console.log)
             }
@@ -125,7 +130,8 @@ function CheckIn ({user}) {
                         onChange={handleChange} 
                         className="form-control" 
                         name="dog_id">
-                        {eachDog}
+                            <option>Select Dog</option>
+                            {eachDog}
                         </select>
                     </div>
                 </div>

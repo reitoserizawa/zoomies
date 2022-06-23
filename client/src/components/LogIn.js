@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import Errors from './Errors.js'
 
-function LogIn({user, setUser, isLoggedIn, setIsLoggedIn}) {
+function LogIn({user, setUser, isLoggedIn, setIsLoggedIn, setIsCheckedIn}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -19,7 +19,11 @@ function LogIn({user, setUser, isLoggedIn, setIsLoggedIn}) {
         body: JSON.stringify({ username, password }),
         }).then((r) => {
         if (r.ok) {
-            r.json().then((user) => setUser(user));
+            r.json().then((user) => {
+                setUser(user)
+                console.log(user.check_ins)
+                user.check_ins.length === 0 ? setIsCheckedIn(false) : setIsCheckedIn(true)
+            });
             history.push('/')
             setUsername("")
             setPassword("")

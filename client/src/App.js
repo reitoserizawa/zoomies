@@ -19,6 +19,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [dogs, setDogs] = useState([])
   const [updatedDogs, setUpdatedDogs] = useState(dogs)
+  const [isCheckedIn, setIsCheckedIn] = useState(false)
 
   const history = useHistory()
 
@@ -46,10 +47,39 @@ function App() {
           // Cookies.set('user_id', user.id)
           setUser(user)
           setIsLoggedIn(true)
+          user.check_ins.length === 0 ? setIsCheckedIn(false) : setIsCheckedIn(true)
         });
       }
     });
   }, [updatedDogs]);
+
+  console.log(`is checked in? ${isCheckedIn}`)
+
+  // useEffect(() => {
+  //   const validateUser = async () => {
+  //     let req = await fetch("/me")
+  //     if (req.ok) {
+  //       req.json().then((user) => {
+  //         // Cookies.set('user_id', user.id)
+  //         setUser(user)
+  //         setIsLoggedIn(true)
+  //       });
+  //     }
+  //   }
+  // })
+
+  // useEffect(() => {
+  //   //console.log(“it’s happening”)
+  //   const validateUser = async () => {
+  //     let req = await fetch(“/validate_user”);
+  //     if (req.ok) {
+  //       setUser(await req.json());
+  //     } else {
+  //       handleLogin(false);
+  //       history.push(“/login”);
+  //     }
+  //   }
+  // })
 
   // 
   console.log(user)
@@ -83,16 +113,16 @@ function App() {
           <HomePage />
         </Route>
         <Route exact path='/signup'>
-          <SignUp setUser={setUser}/>
+          <SignUp setUser={setUser} setIsCheckedIn={setIsCheckedIn}/>
         </Route>
         <Route exact path='/login'>
-          <LogIn setUser={setUser} user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+          <LogIn setUser={setUser} user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setIsCheckedIn={setIsCheckedIn}/>
         </Route>
         <Route exact path='/dog_parks'>
-          <DogParkContainer isLoggedIn={isLoggedIn}/>
+          <DogParkContainer isLoggedIn={isLoggedIn} isCheckedIn={isCheckedIn} user={user}/>
         </Route>
         <Route exact path="/dog_parks/:id">
-          <CheckIn user={user}/>
+          <CheckIn user={user} setIsCheckedIn={setIsCheckedIn}/>
         </Route>
         <Route exact path='/profile'>
           <Profile user={user}/>
