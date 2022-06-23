@@ -26,7 +26,7 @@ function CheckIn ({user}) {
         setDogPark(data)
       })
 
-    //   Fetching to list all the check-ins to list the active dogs at the park
+    // Fetching to list all the check-ins to list the active dogs at the park
       fetch(`/check_ins`)
       .then(res => res.json())
       .then(data => {
@@ -63,6 +63,8 @@ function CheckIn ({user}) {
     // Submitting the new check-in information to the server
     function handleCheckIn (e) {
         e.preventDefault()
+        setData((data => ({...data, user_id: user.id})))
+        console.log(data)
         fetch("/check_ins", {
             method: "POST",
             headers: {
