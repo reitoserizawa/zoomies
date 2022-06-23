@@ -38,6 +38,8 @@ function CheckIn ({user}) {
     // Help refrenshing the page
     if (!user) return null
 
+    console.log(data)
+
 
     // Showing All the Active Dogs
 
@@ -53,6 +55,7 @@ function CheckIn ({user}) {
     // Mapping throguh the user's dogs to put in the pull-down list in the forn
     let eachDog = user.dogs.map(dog =>
         <option key={dog.id} value={dog.id}>{dog.name}</option>)
+
     
     // Grabbing the pull-down list and setting the dog_id to a new check-in data
     function handleChange(e) { 
