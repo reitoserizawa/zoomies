@@ -33,6 +33,65 @@ reito = User.create(
         username: 'reitos',
         password: '12345',
     )
+reito_user = User.create(
+        first_name: 'Reito',
+        last_name: 'Example',
+        email: '456@email.com',
+        img: 'https://images.pexels.com/photos/60597/dahlia-red-blossom-bloom-60597.jpeg?cs=srgb&dl=pexels-pixabay-60597.jpg&fm=jpg',
+        active: false,
+        username: 'reito',
+        password: '12345',
+)
+
+robot_user = User.create(
+        first_name: "Robot",
+        last_name: "Example",
+        email: '789@eamil.com',
+        img: 'https://media.istockphoto.com/photos/cute-blue-robot-giving-thumbs-up-3d-picture-id1350820098?b=1&k=20&m=1350820098&s=170667a&w=0&h=8gO4GcPH-wsEZS6PYn2WXbQN3ZPPv98vE6mBl-Ckwr8=',
+        active: false,
+        username: 'robot',
+        password: '12345',
+)
+
+danny = User.create(
+        first_name: "Danny",
+        last_name: 'Morals',
+        email: 'dm@email.com',
+        img: 'https://en-media.thebetterindia.com/uploads/2018/03/French_Marigold_-_October_Birthday_Flower_-_Tagetes_patula.jpg',
+        active: false,
+        username: 'danny',
+        password: '12345'
+)
+
+norman = User.create(
+        first_name: "Norman",
+        last_name: "Example",
+        email: 'norman@email.com',
+        img: 'https://c.tadst.com/gfx/600x337/full-moon-cherry-blossoms.jpg?1',
+        active: false,
+        username: 'norman',
+        password: '12345',
+)
+
+Dog.create(name: "Nori", breed: "Border Collie", size: "Medium", img: "https://media.istockphoto.com/photos/happy-brown-and-white-border-collie-dog-in-grass-picture-id1147433946?k=20&m=1147433946&s=612x612&w=0&h=rWeNgcox0CSbR_-yvYovtJJAI25cc2vSai6NFlGaCNk=", user_id: katey.id)
+Dog.create(name: "Mini", breed: "Dachshund", size: "Small", img: "https://www.akc.org/wp-content/uploads/2017/11/Longhaired-Dachshund-standing-outdoors.jpg", user_id: reito_user.id)
+Dog.create(name: "Milo", breed: "Schnauzer", size: "Medium", img: "https://i.ytimg.com/vi/Thfv3UaAM60/maxresdefault.jpg", user_id: robot_user.id)
+Dog.create(name: "Missy", breed: "Australian Shepherd", size: "Medium", img: "https://cf.ltkcdn.net/dogs/images/orig/279404-1600x1066-australian-shepherd.jpg", user_id: danny.id)
+Dog.create(name: "Nala", breed: "Labrador Retriever", size: "Large", img: "https://imagesvc.meredithcorp.io/v3/mm/image?q=60&c=sc&poi=face&w=2000&h=1000&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F34%2F2022%2F03%2F22%2Fhappy-labrador-retriever-getty-0322-2000.jpg", user_id: norman.id)
+
+
+
+
+
+
+
+reito = Dog.create(
+                name: "Reito",
+                breed: "Golden Retriever",
+                size: "Large",
+                img: "https://www.prestigeanimalhospital.com/sites/default/files/styles/large/public/golden-retriever-dog-breed-info.jpg?itok=scGfz-nI",
+                user_id: 1
+        )
 
     DogPark.create(
         name: "Dog Park East River Esplanade South",
