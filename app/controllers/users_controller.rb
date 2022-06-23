@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
     def update
         user = find_user
-        user.update!(user_params)
+        user.update!(user_update_params)
         render json: user, status: :ok
     end
 
@@ -32,7 +32,6 @@ class UsersController < ApplicationController
         user.destroy
         head :no_content
     end
-
 
     private
 

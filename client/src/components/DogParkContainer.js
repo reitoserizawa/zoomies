@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import { Routes, Route, useParams } from 'react-router-dom';
 import DogParkItem from './DogParkItem'
 
 function DogParkContainer ({isLoggedIn}) {
@@ -14,7 +13,7 @@ function DogParkContainer ({isLoggedIn}) {
     )
 
     let renderDogParkItem = dogParks.map (dogPark => {
-        return <DogParkItem name={dogPark.name} address={dogPark.address} image={dogPark.img} login={isLoggedIn}/>
+        return <DogParkItem key= {dogPark.id} name={dogPark.name} address={dogPark.address} image={dogPark.img} login={isLoggedIn} id={dogPark.id} />
     })
 
     return (

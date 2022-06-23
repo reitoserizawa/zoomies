@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, useHistory, useParams } from 'react-router-dom';
 import Cookies from 'js-cookie'
-import logo from './logo.svg';
 import './App.css';
 import HomePage from './components/HomePage.js'
 import SignUp from './components/SignUp.js'
@@ -11,6 +10,8 @@ import DogContainer from './components/DogContainer.js'
 import Profile from './components/Profile.js'
 import NavBar from './components/NavBar.js'
 import AddDogForm from './components/AddDogForm';
+
+import CheckIn from './components/CheckIn'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -62,6 +63,9 @@ function App() {
         </Route>
         <Route exact path='/dog_parks'>
           <DogParkContainer isLoggedIn={isLoggedIn}/>
+        </Route>
+        <Route exact path="/dog_parks/:id">
+          <CheckIn user={user}/>
         </Route>
         <Route exact path='/profile'>
           <Profile user={user} setUser={setUser}/>

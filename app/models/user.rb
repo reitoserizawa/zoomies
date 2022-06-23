@@ -11,4 +11,13 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true, length: {minimum: 5}
     validates :password, presence: true, length: {minimum: 5}
     validates :active, inclusion: {in: [true,false]}
+
+    def checked_in_status
+        if self.check_ins == []
+            return false
+        else 
+            return true
+        end
+    end
+
 end

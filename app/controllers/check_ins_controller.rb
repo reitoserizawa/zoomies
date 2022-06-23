@@ -1,5 +1,5 @@
 class CheckInsController < ApplicationController
-    before_action :is_authorized?
+    # before_action :is_authorized?
 
     def index
         check_ins = CheckIn.all

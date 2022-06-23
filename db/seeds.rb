@@ -14,7 +14,7 @@ puts "Seeding started"
 end
 
 # NYC's Dog Park Data
-User.create(
+katey = User.create(
     first_name: 'Katey',
     last_name: 'Van',
     email: '123@gmail.com',
@@ -24,14 +24,15 @@ User.create(
     password: '12345',
 )
 
-reito = 
-    Dog.create(
-        name: "Reito",
-        breed: "Reito",
-        size: "Small",
-        img: "Reito",
-        user_id: 1
-        )
+reito = User.create(
+        first_name: 'Reito',
+        last_name: 'Serizawa',
+        email: '12345@gmail.com',
+        img: 'https://www.gardendesign.com/pictures/images/675x529Max/site_3/helianthus-yellow-flower-pixabay_11863.jpg',
+        active: false,
+        username: 'reitos',
+        password: '12345',
+    )
 
     DogPark.create(
         name: "Dog Park East River Esplanade South",

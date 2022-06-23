@@ -1,6 +1,8 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
-function DogParkItem ({name, address, image, login}) {
+
+function DogParkItem ({name, address, image, login, id}) {
 
     return (
         <div class="col-xl-3 col-md-6 mb-4">
@@ -14,7 +16,15 @@ function DogParkItem ({name, address, image, login}) {
                     
                     <hr/>
                     
-                    {login ? <button type="button" class="btn btn-outline-info">Check In</button> : <button type="button" class="btn btn-outline-info">Log In</button>}
+                    {login ? 
+                    <Link to={`/dog_parks/${id}`}>
+                        <button type="button" class="btn btn-outline-info">Check In</button> 
+                    </Link>
+                    : 
+                    <Link to={`/login`}>
+                    <button type="button" class="btn btn-outline-info">Please Log In</button>
+                    </Link>
+                    }
                     
                 </div>
             </div>
