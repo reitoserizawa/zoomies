@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import DogTile from './DogTile.js'
+import './DogContainer.css'
 
 function DogContainer({dogs}) {
 
@@ -8,7 +9,9 @@ function DogContainer({dogs}) {
     })
 
   return (
-    <div>{renderDogs}</div>
+    <div id='list-of-dogs'>
+      {renderDogs}
+    </div>
   )
 }
 

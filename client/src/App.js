@@ -19,6 +19,8 @@ function App() {
   const [dogs, setDogs] = useState([])
   const [updatedDogs, setUpdatedDogs] = useState(dogs)
 
+  const history = useHistory()
+
   useEffect(() => {
     setUpdatedDogs(dogs)
   }, [dogs])
@@ -58,6 +60,7 @@ function App() {
       if (r.ok) {
         setIsLoggedIn(false)
         setUser(null);
+        history.push('/login')
       }
     });
   }

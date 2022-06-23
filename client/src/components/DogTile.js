@@ -9,8 +9,8 @@ function DogTile({dog, height, width}) {
   }
 
   return (
-    <div onClick={handleClick}>
-        <img class="dog-tile" id={dog.id} width={width} height={height} src={dog.img} title={dog.name}/>
+    <div>
+        <img onClick={handleClick} class="dog-tile" id={dog.id} width={width} height={height} src={dog.img} title={dog.name}/>
     </div>
   )
 }
