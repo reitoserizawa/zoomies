@@ -21,7 +21,6 @@ function SignUp({setUser, setIsCheckedIn}) {
         setFormData({ ...formData, [name]: value });
     }
 
-    console.log(errors)
 
     const handleSignup = (e) => {
         e.preventDefault();
@@ -208,12 +207,13 @@ function SignUp({setUser, setIsCheckedIn}) {
                 </div>
                 <hr />
             <button type="submit" class="btn btn-outline-primary">Sign Up</button>
+            { errors.length !== 0 ? <Errors errors={errors} /> : null}
 
 
             </div>
         </form>
         
-        { errors !== [] ? <Errors errors={errors} /> : null}
+        
 
         </div>
     </>

@@ -87,6 +87,7 @@ function LogIn({user, setUser, isLoggedIn, setIsLoggedIn, setIsCheckedIn}) {
                            </div>
                            <div class="form-group">
                               <p class="text-center">Don't have account? <a href="/signup" id="signup">Sign up here</a></p>
+                              { errors !== [] ? <Errors errors={errors} /> : null}
                            </div>
                         </div>
                     </form>

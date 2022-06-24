@@ -6,11 +6,11 @@ import './DogParkItem.css'
 function DogParkItem ({name, address, image, login, id, count, isCheckedIn}) {
     let activeness
     
-    if (count > 0 && count <= 7) {
+    if (count > 0 && count <= 5) {
        activeness = "not busy"
-    } else if ( count > 7 && count <= 12 ) {
+    } else if ( count > 5 && count <= 10) {
         activeness = "busy"
-    } else if(count > 12) {
+    } else if(count > 10) {
         activeness = "very busy"
     } else {
         activeness = 'empty'

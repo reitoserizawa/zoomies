@@ -173,8 +173,10 @@ function CheckIn ({user, setIsCheckedIn, isLoggedIn}) {
         
         }
 
-        <div id='checked-in-dogs'>
+<div class="container">
+            <div class="row">
             {checkedInDogsPics}
+        </div>
         </div>
 
        <hr/>
