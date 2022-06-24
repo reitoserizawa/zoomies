@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from "react-router-dom";
 import DogTile from './DogTile.js';
+import './CheckIn.css'
 
-function CheckIn ({user, setIsCheckedIn={setIsCheckedIn}}) {
+function CheckIn ({user, setIsCheckedIn, isLoggedIn}) {
     const params = useParams();
 
     // State hook for a dog dark data
@@ -47,7 +48,7 @@ function CheckIn ({user, setIsCheckedIn={setIsCheckedIn}}) {
     // Mapping through and returning images to show the dog pictures associated with the check-ins
     let checkedInDogsPics = matchedCheckIns.map(checkIn => {
         // return <img src={checkIn.dog.img} alt={checkIn.dog.name}/>
-        return <DogTile dog={checkIn.dog} height="100px" width="100px" />
+        return <DogTile dog={checkIn.dog} height="100px" width="100px" isLoggedIn={isLoggedIn} />
     })
 
     
@@ -141,10 +142,15 @@ function CheckIn ({user, setIsCheckedIn={setIsCheckedIn}}) {
 
     return (
         <>
-        <img src={dogPark.img} alt={dogPark.name}/>
+        <img id='check-in-park-pic' src={dogPark.img} alt={dogPark.name} />
+        <br></br>
 
-        <h1>Active Dogs</h1>
-        {checkedInDogsPics}
+        <h1 style={{fontSize: "20px"}}>Active Dogs</h1>
+        <div id='checked-in-dogs'>
+            {checkedInDogsPics}
+        </div>
+        <br></br>
+        
 
         {showButtons}
         </>

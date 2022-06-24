@@ -4,6 +4,8 @@ class Dog < ApplicationRecord
 
   validates :name, presence: true
   validates :breed, presence: true
+  validates :age, inclusion: { in: %w{Puppy Young Adult Senior},
+    message: "Choose a valid age dog"}
   validates :size, inclusion: { in: %w(Small Medium Large),
     message: "Choose a valid size dog" }
   validates :img, presence: true

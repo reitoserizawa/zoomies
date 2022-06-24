@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import DogTile from './DogTile.js'
 import './DogContainer.css'
 
-function DogContainer({dogs}) {
+function DogContainer({dogs, isLoggedIn}) {
 
     const renderDogs = dogs.map((dog) => {
-        return <DogTile key={dog.id} dog={dog} height={'200px'} width={'200px'} />
+        return <DogTile key={dog.id} dog={dog} height={'200px'} width={'200px'} isLoggedIn={isLoggedIn}/>
     })
 
   return (

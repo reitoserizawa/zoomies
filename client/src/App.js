@@ -122,13 +122,13 @@ function App() {
           <DogParkContainer isLoggedIn={isLoggedIn} isCheckedIn={isCheckedIn} user={user}/>
         </Route>
         <Route exact path="/dog_parks/:id">
-          <CheckIn user={user} setIsCheckedIn={setIsCheckedIn}/>
+          <CheckIn user={user} setIsCheckedIn={setIsCheckedIn} isLoggedIn={isLoggedIn}/>
         </Route>
         <Route exact path='/profile'>
-          <Profile user={user}/>
+          <Profile user={user} isLoggedIn={isLoggedIn}/>
         </Route>
         <Route exact path='/dogs'>
-          <DogContainer dogs={updatedDogs}/>
+          <DogContainer dogs={updatedDogs} isLoggedIn={isLoggedIn}/>
         </Route>
         <Route exact path='/add_dog'>
           <AddDogForm user={user} handleAddDog={handleAddDog}/>

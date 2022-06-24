@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import './DogParkItem.css'
 
 
 function DogParkItem ({name, address, image, login, id, count, isCheckedIn}) {

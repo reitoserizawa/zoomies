@@ -11,7 +11,7 @@ function DogParkContainer ({isLoggedIn, isCheckedIn, user}) {
     }, []
     )
 
-    if (!user) return null
+    // if (!user) return null
 
     const link = () => {
         if (isCheckedIn){
@@ -46,7 +46,7 @@ function DogParkContainer ({isLoggedIn, isCheckedIn, user}) {
                 </ul>
                 <h3 style={{position: "absolute", top: "60%", left:"25%"}}>Check In/Check Out <i class="fa-solid fa-circle-check"></i></h3>
                 <ul>
-                    <li style={{position: "absolute", top: "67%", left:"25%"}}><i class="fa-solid fa-bone"></i> If you will go to a dog park, check in to the dog park</li>
+                    <li style={{position: "absolute", top: "67%", left:"25%"}}><i class="fa-solid fa-bone"></i> Check in when you get to the park</li>
                     <li style={{position: "absolute", top: "70%", left:"25%"}}><i class="fa-solid fa-bone"></i> See other dogs at the park</li>
                     <li style={{position: "absolute", top: "73%", left:"25%"}}><i class="fa-solid fa-bone"></i> Don't forget to check out</li>
                 </ul>

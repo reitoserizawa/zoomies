@@ -7,6 +7,7 @@ function AddDogForm({user, handleAddDog}) {
   const [formData, setFormData] = useState({
     name: "",
     breed: "",
+    age: "",
     size: "",
     img: "",
     user_id: ""
@@ -74,6 +75,14 @@ function AddDogForm({user, handleAddDog}) {
             <option>Small</option>
             <option>Medium</option>
             <option>Large</option>
+          </select>
+          <br></br>
+          <select id="age" name="age" value={formData.age} onChange={handleOnChange}>
+            <option>Select Age</option>
+            <option>Puppy</option>
+            <option>Young</option>
+            <option>Adult</option>
+            <option>Senior</option>
           </select>
           <br></br>
           <input

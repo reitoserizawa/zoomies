@@ -4,7 +4,7 @@ import './Profile.css'
 import DogTile from './DogTile'
 import AddDogButton from './AddDogButton'
 
-function Profile({user}) {
+function Profile({user, isLoggedIn}) {
 
     if (!user) return null;
     const { id, first_name, last_name, email, img, active, username, dogs } = user
@@ -22,7 +22,7 @@ function Profile({user}) {
                 <>
                     <p>My dogs</p>
                     {dogs.map((dog) => {
-                        return <DogTile key={dog.id} dog={dog} height={'100px'} width={'100px'}/>
+                        return <DogTile key={dog.id} dog={dog} height={'100px'} width={'100px'} isLoggedIn={isLoggedIn}/>
                     })}
                     <AddDogButton text={'add another dog'} />
                 </>

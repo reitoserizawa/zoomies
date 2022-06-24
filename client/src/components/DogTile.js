@@ -2,10 +2,12 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import './DogTile.css'
 
-function DogTile({dog, height, width}) {
+function DogTile({dog, height, width, isLoggedIn}) {
   const history = useHistory()
   const handleClick = (e) => {
-    history.push(`/dogs/${e.target.id}`)
+    if (isLoggedIn){
+      history.push(`/dogs/${e.target.id}`)
+    }
   }
 
   return (
