@@ -22,7 +22,7 @@ function DogParkItem ({name, address, image, login, id}) {
                     </Link>
                     : 
                     <Link to={`/login`}>
-                    <button type="button" class="btn btn-outline-info">Please Log In</button>
+                    <button type="button" class="btn btn-outline-info">Please log in</button>
                     </Link>
                     }
                     

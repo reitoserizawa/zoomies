@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function CheckIn ({user}) {
     const params = useParams();
@@ -44,9 +45,33 @@ function CheckIn ({user}) {
     // Returning all the check-ins at the park
     let matchedCheckIns = checkIns.filter(checkIn => checkIn.dog_park_id == params.id)
     // Mapping through and returning images to show the dog pictures associated with the check-ins
-    let checkedInDogsPics = matchedCheckIns.map(checkIn => {
-        return <img src={checkIn.dog.img} alt={checkIn.dog.name}/>})
+    let checkedInDogsPics
 
+    console.log(matchedCheckIns.length)
+    
+    if (matchedCheckIns.length === 0) {
+        checkedInDogsPics = <h1>No Checked In Dogs</h1>
+    } else {
+        checkedInDogsPics = matchedCheckIns.map(checkIn => {
+            return (
+                
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    <img src={checkIn.dog.img} className="card-img-top" alt="Dog Park Pitcure"/>
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0" ><i class="fa-solid fa-paw"></i> {checkIn.dog.name}</h5>
+                        <div class="card-text text-black-50">
+                            <span style={{fontSize:"90%"}}><i class="fa-solid fa-user-alien"></i> {checkIn.dog.breed    }</span>
+                        </div>
+                        <hr/>
+                        <Link to={`/dogs/${checkIn.dog.id}`}>
+                        <button type="button" class="btn btn-outline-info">See profile</button> 
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        )})
+    }
     
     // Creating/Deleting a New Check-in Data
 
