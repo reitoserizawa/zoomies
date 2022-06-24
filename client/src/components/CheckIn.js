@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import DogTile from './DogTile.js';
 import './CheckIn.css'
 
@@ -51,6 +51,31 @@ function CheckIn ({user, setIsCheckedIn, isLoggedIn}) {
         return <DogTile dog={checkIn.dog} height="100px" width="100px" isLoggedIn={isLoggedIn} />
     })
 
+    console.log(matchedCheckIns.length)
+    
+    if (matchedCheckIns.length === 0) {
+        checkedInDogsPics = <h1>No Checked In Dogs</h1>
+    } else {
+        checkedInDogsPics = matchedCheckIns.map(checkIn => {
+            return (
+                
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    <img src={checkIn.dog.img} className="card-img-top" alt="Dog Park Pitcure"/>
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0" ><i class="fa-solid fa-paw"></i> {checkIn.dog.name}</h5>
+                        <div class="card-text text-black-50">
+                            <span style={{fontSize:"90%"}}><i class="fa-solid fa-user-alien"></i> {checkIn.dog.breed    }</span>
+                        </div>
+                        <hr/>
+                        <Link to={`/dogs/${checkIn.dog.id}`}>
+                        <button type="button" class="btn btn-outline-info">See profile</button> 
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        )})
+    }
     
     // Creating/Deleting a New Check-in Data
 

@@ -55,7 +55,7 @@ code {
 
 .homepage-top-img { 
   width: 100%;
-  height: auto;
+  height: 94vh;
   opacity: 0.8;
   object-fit: cover;
 }
@@ -91,4 +91,14 @@ code {
 
 ul li {
   list-style-type: none
+}
+
+/* Login Signup CSS */
+
+.login-img { 
+  width: 100vw;
+  height: 93.5vh;
+  opacity: 0.8;
+  object-fit: contain;
+  background-image: url('https://cdn.theatlantic.com/thumbor/D7oIBMP-jlq-lwsJhiMci490Ze0=/0x0:2809x1580/1600x900/media/img/mt/2022/04/GettyImages_515303226/original.jpg')
 }
