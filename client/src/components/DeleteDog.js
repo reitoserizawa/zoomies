@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+import { MdDeleteOutline } from 'react-icons/md';
 
 function DeleteDog({dog, handleDeleteDog}) {
     const history = useHistory()
@@ -14,7 +15,7 @@ function DeleteDog({dog, handleDeleteDog}) {
         history.push('/profile')
     }
   return (
-    <button onClick={handleClick} id={dog.id}>delete</button>
+    <MdDeleteOutline onClick={handleClick} id={dog.id}/>
   )
 }
 
