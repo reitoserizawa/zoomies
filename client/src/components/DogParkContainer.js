@@ -20,12 +20,6 @@ function DogParkContainer ({isLoggedIn, isCheckedIn, user}) {
     }
 
     // console.log(`link ${link()}`)
-         
-    
-    
-
-
-
 
     let renderDogParkItem = dogParks.map (dogPark => {
         return <DogParkItem key= {dogPark.id} name={dogPark.name} address={dogPark.address} image={dogPark.img} login={isLoggedIn} id={dogPark.id} count={dogPark.dog_count} isCheckedIn={isCheckedIn} />

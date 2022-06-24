@@ -44,7 +44,7 @@ function CheckIn ({user, setIsCheckedIn, isLoggedIn}) {
     // Showing All the Active Dogs
 
     // Returning all the check-ins at the park
-    let matchedCheckIns = checkIns.filter(checkIn => checkIn.dog_park_id == params.id)
+    let matchedCheckIns = checkIns.filter(checkIn => checkIn.dog_park_id === params.id)
     // Mapping through and returning images to show the dog pictures associated with the check-ins
     let checkedInDogsPics = matchedCheckIns.map(checkIn => {
         // return <img src={checkIn.dog.img} alt={checkIn.dog.name}/>
@@ -54,7 +54,8 @@ function CheckIn ({user, setIsCheckedIn, isLoggedIn}) {
     console.log(matchedCheckIns.length)
     
     if (matchedCheckIns.length === 0) {
-        checkedInDogsPics = <h1>No Checked In Dogs</h1>
+        // checkedInDogsPics = <h1>No Checked In Dogs</h1>
+        checkedInDogsPics = null
     } else {
         checkedInDogsPics = matchedCheckIns.map(checkIn => {
             return (
@@ -137,6 +138,8 @@ function CheckIn ({user, setIsCheckedIn, isLoggedIn}) {
         return newArr
     })
 
+    const link = () => `http://localhost:4000/dog_parks/${user.check_ins[0].dog_park_id}`
+
     let showButtons 
         // If the checked in dog park is the same as the params.id, return Check Out button
         if (checked_park_ids.find(checked_park_id => checked_park_id === params.id)) {
@@ -144,7 +147,10 @@ function CheckIn ({user, setIsCheckedIn, isLoggedIn}) {
 
         // Else if the user is checked in but not on the checked-in dog park page, return "Please Check Out First"
         } else if (user.checked_in_status) {
-            showButtons = <h1>Please Check Out First</h1>
+            showButtons = 
+            <div class="col-md-12 text-center">
+                <p>To check in at park, please check out first! <a href={link()}>Here</a></p>
+            </div>
         } else {
             // Else if the user is not checked-in at all, show the check-in buttons with the pull-down of user's dogs
             showButtons =
@@ -167,17 +173,39 @@ function CheckIn ({user, setIsCheckedIn, isLoggedIn}) {
 
     return (
         <>
-        <img id='check-in-park-pic' src={dogPark.img} alt={dogPark.name} />
-        <br></br>
+        <div class="logo mb-0"  style={{paddingTop:"3%"}}>
+			<div class="col-md-12 text-center">
+				<h1><i class="fa-solid fa-tree"></i> {dogPark.name}</h1>
+                    <div class="text-black-50">
+                        <span style={{fontSize:"130%"}}><i class="fa-solid fa-user-alien"></i> {dogPark.address}</span>
+                    </div>
+			</div>
+		</div>
 
-        <h1 style={{fontSize: "20px"}}>Active Dogs</h1>
+        <hr/>
+
+        <div className="homepage-container" style={{position: "relative",backgroundColor: "white"}}>
+                <img id='check-in-park-pic' src={dogPark.img} alt={dogPark.name} />
+        </div>
+
+        <hr/>
+
+        {matchedCheckIns.length === 0 ? null :
+        
+        <div class="col-md-12 text-center">
+            <h3>Friends @ Park <i class="fa-solid fa-dog"></i></h3>
+        </div>
+        
+        }
+        
         <div id='checked-in-dogs'>
             {checkedInDogsPics}
         </div>
-        <br></br>
         
-
+        
+        <hr/>
         {showButtons}
+        <div style={{padding:"0.5%"}}></div>
         </>
     )
 }

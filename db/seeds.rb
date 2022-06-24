@@ -13,7 +13,6 @@ puts "Seeding started"
     
 end
 
-# NYC's Dog Park Data
 katey = User.create(
     first_name: 'Katey',
     last_name: 'Van',
@@ -73,26 +72,117 @@ norman = User.create(
         password: '12345',
 )
 
+jackey = User.create(
+        first_name: "Jackey",
+        last_name: "Serizawa",
+        email: 'jackey@email.com',
+        img: Faker::Avatar.image,
+        active: false,
+        username: 'jackey',
+        password: '12345',
+)
+
+yuki = User.create(
+        first_name: "Yuki",
+        last_name: "Sato",
+        email: 'yukisato@email.com',
+        img: Faker::Avatar.image,
+        active: false,
+        username: 'yuki',
+        password: '12345',
+)
+
+lucky = User.create(
+        first_name: "Lucky",
+        last_name: "Best",
+        email: 'lucky@email.com',
+        img: Faker::Avatar.image,
+        active: false,
+        username: 'lucky',
+        password: '12345',
+)
+
+harold = User.create(
+        first_name: "Harold",
+        last_name: "Great",
+        email: 'harold@email.com',
+        img: Faker::Avatar.image,
+        active: false,
+        username: 'harold',
+        password: '12345',
+)
+
+maxine = User.create(
+        first_name: "Maxine",
+        last_name: "Gold",
+        email: 'maxine@email.com',
+        img: Faker::Avatar.image,
+        active: false,
+        username: 'maxine',
+        password: '12345',
+)
+
 Dog.create(name: "Nori", breed: "Border Collie", age: "Adult", size: "Medium", img: "https://media.istockphoto.com/photos/happy-brown-and-white-border-collie-dog-in-grass-picture-id1147433946?k=20&m=1147433946&s=612x612&w=0&h=rWeNgcox0CSbR_-yvYovtJJAI25cc2vSai6NFlGaCNk=", user_id: katey.id)
 Dog.create(name: "Mini", breed: "Dachshund", age: "Puppy", size: "Small", img: "https://www.akc.org/wp-content/uploads/2017/11/Longhaired-Dachshund-standing-outdoors.jpg", user_id: reito_user.id)
 Dog.create(name: "Milo", breed: "Schnauzer", age: "Senior", size: "Medium", img: "https://i.ytimg.com/vi/Thfv3UaAM60/maxresdefault.jpg", user_id: robot_user.id)
 Dog.create(name: "Missy", breed: "Australian Shepherd", age: "Puppy", size: "Medium", img: "https://cf.ltkcdn.net/dogs/images/orig/279404-1600x1066-australian-shepherd.jpg", user_id: danny.id)
 Dog.create(name: "Nala", breed: "Labrador Retriever", age: "Young", size: "Large", img: "https://imagesvc.meredithcorp.io/v3/mm/image?q=60&c=sc&poi=face&w=2000&h=1000&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F34%2F2022%2F03%2F22%2Fhappy-labrador-retriever-getty-0322-2000.jpg", user_id: norman.id)
 
-
-
-
-
-
-
-reito = Dog.create(
-                name: "Reito",
-                breed: "Golden Retriever",
-                age: "Young",
-                size: "Large",
-                img: "https://www.prestigeanimalhospital.com/sites/default/files/styles/large/public/golden-retriever-dog-breed-info.jpg?itok=scGfz-nI",
-                user_id: 1
+Dog.create(
+        name: "Saving",
+        breed: "German Shepherd",
+        age: "Puppy",
+        size: "Large",
+        img: "https://upload.wikimedia.org/wikipedia/commons/d/d0/German_Shepherd_-_DSC_0346_%2810096362833%29.jpg",
+        user_id: maxine.id
         )
+
+Dog.create(
+        name: "Checking",
+        breed: "Golden Doodle",
+        age: "Senior",
+        size: "Large",
+        img: "https://d17fnq9dkz9hgj.cloudfront.net/breed-uploads/2019/09/goldendoodle-dog-breed.jpeg?bust=1646891306",
+        user_id: harold.id
+        )
+
+Dog.create(
+        name: "Bobby",
+        breed: "Shiba",
+        age: "Young",
+        size: "Medium",
+        img: "https://upload.wikimedia.org/wikipedia/en/5/5f/Original_Doge_meme.jpg",
+        user_id: lucky.id
+        )
+
+Dog.create(
+        name: "Reito",
+        breed: "Golden Retriever",
+        age: "Young",
+        size: "Large",
+        img: "https://www.prestigeanimalhospital.com/sites/default/files/styles/large/public/golden-retriever-dog-breed-info.jpg?itok=scGfz-nI",
+        user_id: reito.id
+        )
+
+Dog.create(
+        name: "Pockey", 
+        breed: "Beagle", 
+        age: "Puppy", 
+        size: "Small", 
+        img: "https://vetstreet.brightspotcdn.com/dims4/default/ed822f6/2147483647/thumbnail/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F75%2F371580ca7a11e0ad9e12313817c323%2Ffile%2FBeagle-1-645mk062311.jpg", 
+        user_id: jackey.id
+)
+
+Dog.create(
+        name: "Toshi", 
+        breed: "Chihuahua", 
+        age: "Senior", 
+        size: "Small", 
+        img: "https://static.onecms.io/wp-content/uploads/sites/47/2021/06/24/singing-chihuahua-2000.jpg", 
+        user_id: yuki.id
+)
+
+# NYC's Dog Park Data
 
     DogPark.create(
         name: "Dog Park East River Esplanade South",
