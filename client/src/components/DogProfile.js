@@ -4,6 +4,7 @@ import './DogProfile.css'
 import DeleteDog from './DeleteDog'
 import EditButton from './EditButton'
 
+
 function DogProfile({user, handleDeleteDog}) {
     const [dog, setDog] = useState(null)
     const [updatedDog, setUpdatedDog] = useState(dog)
@@ -27,21 +28,24 @@ function DogProfile({user, handleDeleteDog}) {
 
 
   return (
-    <div id='dog-profile'>
-        <h1>{dog.name}</h1>
-        <img id='dog-profile-img' src={dog.img}/>
-        <br></br>
-        <small className='dog-profile-text'>Breed: {dog.breed}</small>
-        <small className='dog-profile-text'>Age: {dog.age}</small>
-        <small className='dog-profile-text'>Size: {dog.size}</small>
-        <small class='dog-profile-text'>Owner: {dog.user.first_name} {dog.user.last_name}</small>
-        {dog.user.id === user.id ? 
-        <div>
-            <DeleteDog dog={dog} handleDeleteDog={handleDeleteDog}/>
-            <EditButton dog={dog} handleDogEdit={handleDogEdit}/> 
+    <div id="dog-profile-background">
+        <div id='space-between'>
+            <div id='dog-profile'>
+                <h1>{dog.name}</h1>
+                <img id='dog-profile-img' src={dog.img}/>
+                <br></br>
+                <small className='dog-profile-text'>Breed: {dog.breed}</small>
+                <small className='dog-profile-text'>Age: {dog.age}</small>
+                <small className='dog-profile-text'>Size: {dog.size}</small>
+                <small class='dog-profile-text'>Owner: {dog.user.first_name} {dog.user.last_name}</small>
+                {dog.user.id === user.id ? 
+                <div id='edit-icons'>
+                    <DeleteDog dog={dog} handleDeleteDog={handleDeleteDog}/>
+                    <EditButton dog={dog} handleDogEdit={handleDogEdit}/> 
+                </div>
+                : null}
+            </div>
         </div>
-        : null}
-
     </div>
   )
 }

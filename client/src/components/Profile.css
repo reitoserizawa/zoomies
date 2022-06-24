@@ -1,9 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
+
+#profile-background{
+    height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1561691494-c1f7d6f8c7b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2062&q=80");
+    background-position: center bottom;
+}
+
+#profile-spacing{
+    padding: 50px
+}
+
 #my-profile {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 10%;
+    border: 2px solid black;
+    padding: 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 
 }
 

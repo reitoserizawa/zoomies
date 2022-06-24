@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "./EditDogForm.css"
 
 function EditDogForm({dog, handleDogEdit, setShowEdit}) {
     const [formData, setFormData] = useState({})
@@ -25,34 +26,36 @@ function EditDogForm({dog, handleDogEdit, setShowEdit}) {
         setFormData({})
     }
   return (
-    <form onSubmit={handleSubmit}> 
-        <select id="size" name="size" value={formData.size} onChange={handleOnChange}>
-            <option>Select Size</option>
-            <option>Small</option>
-            <option>Medium</option>
-            <option>Large</option>
-          </select>
-          <br></br>
-          <select id="age" name="age" value={formData.age} onChange={handleOnChange}>
-            <option>Select Age</option>
-            <option>Puppy</option>
-            <option>Young</option>
-            <option>Adult</option>
-            <option>Senior</option>
-          </select>
-          <br></br>
-          <input
-          type="text"
-          id="img"
-          autoComplete="off"
-          placeholder='enter image'
-          name='img'
-          value={formData.img}
-          onChange={handleOnChange}
-          />
-          <br></br>
-          <button type="submit">Save</button>
-    </form>
+    <div id="edit-dog-form">
+        <form onSubmit={handleSubmit}> 
+            <select id="size" name="size" value={formData.size} onChange={handleOnChange}>
+                <option>Select Size</option>
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                </select>
+                <br></br>
+                <select id="age" name="age" value={formData.age} onChange={handleOnChange}>
+                <option>Select Age</option>
+                <option>Puppy</option>
+                <option>Young</option>
+                <option>Adult</option>
+                <option>Senior</option>
+                </select>
+                <br></br>
+                <input
+                type="text"
+                id="img"
+                autoComplete="off"
+                placeholder='enter image'
+                name='img'
+                value={formData.img}
+                onChange={handleOnChange}
+                />
+                <br></br>
+                <button id='edit-button' type="submit">Save</button>
+        </form>
+    </div>
   )
 }
 
