@@ -212,6 +212,7 @@ function SignUp({setUser, setIsCheckedIn}) {
 
             </div>
         </form>
+        
         { errors !== [] ? <Errors errors={errors} /> : null}
 
         </div>
